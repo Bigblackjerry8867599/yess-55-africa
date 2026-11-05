@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1100">
     <title>Mealhippo | Preview</title>
     <meta name="description" content="mealhippo offers curated hospitality experiences that connect passionate hosts with community-minded attendees.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -98,25 +98,6 @@
             height: 100%;
         }
 
-        #menu-toggle {
-            display: none;
-            min-width: 44px;
-            min-height: 44px;
-            align-items: center;
-            justify-content: center;
-            /* 44px tall tap target centered over the 22px nav bar */
-            margin: -11px -0.5rem -11px 0;
-            font-size: 1rem;
-            line-height: 1;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            color: #fff;
-            transition: color 0.3s ease;
-        }
-
-        #menu-toggle:hover { color: var(--accent); }
-
         #nav-links {
             list-style: none;
             display: flex;
@@ -149,23 +130,6 @@
             font-size: 0.78rem;
             text-transform: uppercase;
             letter-spacing: 0.09em;
-        }
-
-        #nav-links.open {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            position: absolute;
-            top: 22px;
-            right: 1rem;
-            left: auto;
-            padding: 1rem;
-            background: var(--brand-forest);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            border-radius: 5px;
-            gap: 1rem;
-            z-index: 999;
-            text-align: left;
         }
 
         /* Buttons */
@@ -229,9 +193,8 @@
             overflow: hidden;
         }
 
-        /* Fixed: was flex: 1 (basis 0%) which ignored the 55%/45% widths */
         .hero-column {
-            flex: 0 1 auto;
+            flex: 1;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
@@ -281,8 +244,7 @@
             image-rendering: -webkit-optimize-contrast;
             will-change: transform;
             pointer-events: none;
-            /* Fluid offset — replaces the hard 420px / 300px jump */
-            margin-top: clamp(120px, 32vw, 420px);
+            margin-top: 420px;
         }
 
         @keyframes floatLady {
@@ -419,14 +381,11 @@
 
         @media (max-width: 992px) {
             .hero-text { font-size: 2.25rem; }
+            .hero-lady { max-width: 500px; margin-top: 300px; }
             .headline-right { font-size: 1.25rem; padding: 7px 22px 7px 26px; }
-            /* hero-lady offset now handled by clamp() */
         }
 
         @media (max-width: 768px) {
-            #menu-toggle { display: flex; }
-            #nav-links { display: none; }
-
             .container { flex-direction: column-reverse; }
 
             .hero-text {
@@ -496,7 +455,6 @@
             }
         }
 
-        /* NEW: pills stack into two full-width 44px-tall buttons on small phones */
         @media (max-width: 480px) {
             .hero-btns {
                 flex-direction: column;
@@ -565,7 +523,6 @@
             z-index: 1;
         }
 
-        /* Pause on hover, keyboard focus, or JS-toggled .is-paused */
         .ring-stage:hover .card-ring,
         .ring-stage:focus-within .card-ring,
         .card-ring.is-paused {
@@ -577,7 +534,6 @@
             to   { transform: rotateY(360deg); }
         }
 
-        /* .rot-card is now an <a> — reset anchor defaults, keep the visual */
         .rot-card {
             position: absolute;
             top: 0;
@@ -595,19 +551,11 @@
             -webkit-backface-visibility: hidden;
             transform: rotateY(calc(var(--i) * 60deg)) translateZ(var(--ring-radius));
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
-            text-decoration: none;
-            color: inherit;
         }
 
-        .rot-card:hover,
-        .rot-card:focus-visible {
+        .rot-card:hover {
             border-color: var(--accent);
             box-shadow: 0 22px 55px rgba(255, 209, 102, 0.28);
-            outline: none;
-        }
-        .rot-card:focus-visible {
-            outline: 2px solid var(--accent);
-            outline-offset: 4px;
         }
 
         .rot-card img {
@@ -833,7 +781,6 @@
 
         .services {
             display: grid;
-            /* min(300px, 100%) prevents overflow on narrow phones */
             grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
             gap: 30px;
             margin-top: 50px;
@@ -1172,10 +1119,6 @@
 <body>
     <nav id="navbar">
         <div class="nav-container">
-            <button onclick="toggleMenu()" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
-                <i class="fas fa-bars"></i>
-            </button>
-
             <ul id="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="solutions.html">Solutions</a></li>
@@ -1214,59 +1157,59 @@
         <div class="ring-stage">
             <div class="card-ring">
 
-                <a href="case-studies.html#business-dinners" class="rot-card" style="--i:0" aria-label="Business dinners — explore case studies">
+                <article class="rot-card" style="--i:0">
                     <img src="https://picsum.photos/seed/mealcarta-farm/600/420" alt="Long farm table set outdoors" loading="lazy">
                     <div class="rot-card-body">
                         <h3>Business dinners</h3>
                         <p>These dinners help coordinate mutual business relationships.</p>
                         <span class="rot-card-tag">Seasonal &middot; Outdoor</span>
                     </div>
-                </a>
+                </article>
 
-                <a href="case-studies.html#social-hubs" class="rot-card" style="--i:1" aria-label="Social hubs — explore case studies">
+                <article class="rot-card" style="--i:1">
                     <img src="https://picsum.photos/seed/mealcarta-rooftop/600/420" alt="Rooftop dinner at dusk" loading="lazy">
                     <div class="rot-card-body">
                         <h3>Social hubs</h3>
                         <p>Experiential arrangements to keep you dialed in to community.</p>
                         <span class="rot-card-tag">City &middot; Evening</span>
                     </div>
-                </a>
+                </article>
 
-                <a href="case-studies.html#experiential-learning" class="rot-card" style="--i:2" aria-label="Experiential learning — explore case studies">
+                <article class="rot-card" style="--i:2">
                     <img src="https://picsum.photos/seed/mealcarta-kitchen/600/420" alt="Hands cooking in a shared kitchen" loading="lazy">
                     <div class="rot-card-body">
                         <h3>Experiential Learning</h3>
                         <p>Discover new things, engage with the builders of tomorrow; find hosts and attendees intent on showing and sharing knowledge.</p>
                         <span class="rot-card-tag">Workshop &middot; Hands-on</span>
                     </div>
-                </a>
+                </article>
 
-                <a href="case-studies.html#orchard-picnics" class="rot-card" style="--i:3" aria-label="Orchard picnics — explore case studies">
+                <article class="rot-card" style="--i:3">
                     <img src="https://picsum.photos/seed/mealcarta-orchard/600/420" alt="Picnic under orchard trees" loading="lazy">
                     <div class="rot-card-body">
                         <h3>Orchard Picnics</h3>
                         <p>Blankets, baskets and slow afternoons under the trees.</p>
                         <span class="rot-card-tag">Daylight &middot; Family</span>
                     </div>
-                </a>
+                </article>
 
-                <a href="case-studies.html#mealcards" class="rot-card" style="--i:4" aria-label="Mealcards — explore case studies">
+                <article class="rot-card" style="--i:4">
                     <img src="https://picsum.photos/seed/mealcarta-chef/600/420" alt="Chef plating a dish at the counter" loading="lazy">
                     <div class="rot-card-body">
                         <h3>Mealcards</h3>
                         <p>These are digital tokens and or printed cards that pay for meals in curated spaces.</p>
                         <span class="rot-card-tag">Intimate &middot; Tasting</span>
                     </div>
-                </a>
+                </article>
 
-                <a href="case-studies.html#community-brunch" class="rot-card" style="--i:5" aria-label="Community brunch — explore case studies">
+                <article class="rot-card" style="--i:5">
                     <img src="https://picsum.photos/seed/mealcarta-brunch/600/420" alt="Community brunch spread" loading="lazy">
                     <div class="rot-card-body">
                         <h3>Community Brunch</h3>
                         <p>Weekend gatherings that turn neighbours into regulars.</p>
                         <span class="rot-card-tag">Weekend &middot; Social</span>
                     </div>
-                </a>
+                </article>
 
             </div>
         </div>
@@ -1377,7 +1320,7 @@
     <section class="cta">
         <div class="container">
             <h2>Ready to Join Our Community?</h2>
-            <p>Buy a Mealcard, sign up, or send us a message. Join the company of thousands.</p>
+            <p>Buy a Mealcard and or sign-up (top via menu). Also you can shoot us a message via mail. Join the company of thousands.</p>
 
             <div class="cta-btns">
                 <a href="https://tally.so/r/3lLGyp" class="btn btn-light">Get a Mealcard</a>
@@ -1434,52 +1377,8 @@
 </footer>
 
     <script>
-        // ===== NAV MENU =====
-        const navLinks = document.getElementById('nav-links');
-        const menuToggle = document.getElementById('menu-toggle');
-
-        function openMenu() {
-            navLinks.classList.add('open');
-            menuToggle.setAttribute('aria-expanded', 'true');
-        }
-        function closeMenu() {
-            navLinks.classList.remove('open');
-            menuToggle.setAttribute('aria-expanded', 'false');
-        }
-        function toggleMenu() {
-            if (navLinks.classList.contains('open')) closeMenu();
-            else openMenu();
-        }
-
-        // Close on link tap
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', closeMenu);
-        });
-
-        // Close on outside click
-        document.addEventListener('click', (e) => {
-            if (!navLinks.classList.contains('open')) return;
-            if (navLinks.contains(e.target) || menuToggle.contains(e.target)) return;
-            closeMenu();
-        });
-
-        // Close on Escape
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && navLinks.classList.contains('open')) {
-                closeMenu();
-                menuToggle.focus();
-            }
-        });
-
-        // Close on resize past breakpoint
-        function handleResize() {
-            if (window.innerWidth > 768) closeMenu();
-        }
-        window.addEventListener('resize', handleResize);
-        window.addEventListener('load', handleResize);
-
         // ===== ROTATING RING =====
-        // Pause when: off-screen, while touched, or on hover/focus (CSS).
+        // Pause when off-screen or while touched. Hover/focus handled in CSS.
         document.addEventListener('DOMContentLoaded', function() {
             const ringStage = document.querySelector('.ring-stage');
             const cardRing = document.querySelector('.card-ring');
@@ -1493,7 +1392,6 @@
                     cardRing.classList.toggle('is-paused', shouldPause);
                 }
 
-                // Pause when off-screen (saves CPU/battery on mobile)
                 if ('IntersectionObserver' in window) {
                     const ringObserver = new IntersectionObserver((entries) => {
                         entries.forEach(entry => {
@@ -1504,7 +1402,6 @@
                     ringObserver.observe(ringStage);
                 }
 
-                // Hold to pause on touch (lets users read a card)
                 ringStage.addEventListener('touchstart', () => {
                     touching = true;
                     updateRingPauseState();
@@ -1553,4 +1450,4 @@
         });
     </script>
 </body>
-</html>
+    </html>
