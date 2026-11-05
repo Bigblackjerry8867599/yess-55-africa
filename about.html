@@ -66,11 +66,11 @@
             border-radius: 3px;
         }
 
-        /* ===== SLIM NAV ===== */
+        /* ===== SLIM NAV — same background as hero ===== */
         nav {
             position: sticky;
             top: 0;
-            background: var(--brand-forest);
+            background: radial-gradient(circle at 50% 0%, rgba(255, 209, 102, 0.08) 0%, transparent 62%), var(--light);
             z-index: 1000;
             border-bottom: none;
             padding: 0;
@@ -154,7 +154,8 @@
             right: 1rem;
             left: auto;
             padding: 1rem;
-            background: var(--brand-forest);
+            background: radial-gradient(circle at 50% 0%, rgba(255, 209, 102, 0.08) 0%, transparent 62%), var(--light);
+            border: 1px solid rgba(255, 209, 102, 0.18);
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
             border-radius: 5px;
             gap: 1rem;
@@ -322,9 +323,8 @@
             filter: drop-shadow(0 0 14px rgba(255, 209, 102, 0.35));
         }
 
-        /* ===== HERO PARAGRAPH — italic stylized card with quotes ===== */
+        /* ===== HERO PARAGRAPH — italic stylized, no card ===== */
         .hero-paragraph {
-            position: relative;
             font-family: var(--font-body);
             font-style: italic;
             font-size: clamp(1.05rem, 1.3vw, 1.3rem);
@@ -333,26 +333,8 @@
             color: #ece6d3;
             max-width: 560px;
             margin-bottom: 1.5rem;
-            padding: 30px 40px;
-            border: 1px solid rgba(255, 209, 102, 0.18);
-            border-radius: 18px;
-            background: linear-gradient(180deg, rgba(255, 209, 102, 0.055) 0%, rgba(255, 209, 102, 0.012) 100%);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 18px 40px rgba(0, 0, 0, 0.35);
             text-wrap: pretty;
         }
-
-        .hero-paragraph::before,
-        .hero-paragraph::after {
-            position: absolute;
-            font-family: var(--font-display);
-            font-style: italic;
-            font-size: 3rem;
-            line-height: 1;
-            color: rgba(255, 209, 102, 0.45);
-            pointer-events: none;
-        }
-        .hero-paragraph::before { content: '\201C'; top: 4px; left: 16px; }
-        .hero-paragraph::after  { content: '\201D'; bottom: -2px; right: 16px; }
 
         .hero-paragraph .hl {
             font-style: italic;
@@ -448,7 +430,6 @@
             .hero-text { font-size: 2.25rem; }
             .hero-lady { max-width: 500px; margin-top: 300px; }
             .headline-right { font-size: 1.25rem; padding: 7px 22px 7px 26px; }
-            .hero-paragraph { padding: 26px 30px; }
         }
 
         @media (max-width: 768px) {
@@ -466,10 +447,7 @@
                 font-size: 1.05rem;
                 line-height: 1.7;
                 margin-bottom: 1rem;
-                padding: 24px 28px;
             }
-            .hero-paragraph::before { font-size: 2.2rem; left: 8px; top: 0; }
-            .hero-paragraph::after  { font-size: 2.2rem; right: 8px; bottom: -6px; }
 
             .hero-column:nth-child(1),
             .hero-column:nth-child(2) {
@@ -513,9 +491,7 @@
             .hero-lady { max-width: 260px; }
             .headline-right { font-size: 0.95rem; padding: 5px 16px 5px 20px; letter-spacing: 0.08em; }
             .hero-text { font-size: 1.4rem; }
-            .hero-paragraph { padding: 20px 20px; font-size: 1rem; }
-            .hero-paragraph::before { font-size: 1.8rem; left: 4px; top: -4px; }
-            .hero-paragraph::after  { font-size: 1.8rem; right: 4px; bottom: -8px; }
+            .hero-paragraph { font-size: 1rem; }
 
             .hero-btns {
                 flex-direction: row;
@@ -1537,4 +1513,4 @@
         });
     </script>
 </body>
-  </html>
+    </html>
